@@ -1,15 +1,19 @@
 package week2Day1;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LearnWindowHandles {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		// Launch the browser and load URL, maximise
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
@@ -46,6 +50,9 @@ public class LearnWindowHandles {
 		
 		System.out.println(driver.getTitle());
 		
+		File src = driver.getScreenshotAs(OutputType.FILE);
+		File desc = new File("./snaps/snap1.jpg");		
+		FileUtils.copyFile(src, desc);
 		
 
 

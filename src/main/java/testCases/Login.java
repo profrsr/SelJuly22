@@ -11,7 +11,9 @@ public class Login extends GenericWrappers{
 		invokeApp("chrome", "http://leaftaps.com/opentaps");
 		enterById("username", "DemoSalesManager");
 		enterById("password", "crmsfa");
+		clickByClassName("decorativeSubmit11111");
 		clickByClassName("decorativeSubmit");
+	//	clickByLink("CRM/SFA");
 		
 	}
 

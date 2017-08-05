@@ -5,14 +5,18 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class GenericWrappers implements Wrappers {
+
 	RemoteWebDriver driver;
 	int i=1;
+
 
 	public void invokeApp(String browser, String url) {
 		if(browser.equalsIgnoreCase("chrome")){
@@ -30,19 +34,24 @@ public class GenericWrappers implements Wrappers {
 	}
 
 	public void enterById(String idValue, String data) {
-		driver.findElementById(idValue).sendKeys(data);
-		System.out.println("The text Field "+idValue+" is entered with text "+data);
-		takeSnap();
+		try {
+			driver.findElementById(idValue).sendKeys(data);
+			System.out.println("The text Field "+idValue+" is entered with text "+data);
+			takeSnap();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void enterByName(String nameValue, String data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void enterByXpath(String xpathValue, String data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public boolean verifyTitle(String title) {
@@ -52,53 +61,67 @@ public class GenericWrappers implements Wrappers {
 
 	public void verifyTextById(String id, String text) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void verifyTextByXpath(String xpath, String text) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void verifyTextContainsByXpath(String xpath, String text) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void clickById(String id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void clickByClassName(String classVal) {
-		driver.findElementByClassName(classVal).click();
-		System.out.println("The button "+classVal+" is clicked");
-		takeSnap();
+		try {
+			driver.findElementByClassName(classVal).click();
+			System.out.println("The button "+classVal+" is clicked");
+		} catch (NoSuchElementException e) {
+			System.err.println("The button "+classVal+ " could not be click");			
+			throw new RuntimeException();
+		} catch (WebDriverException e){
+			System.err.println("Unknown exception occured");			
+		} finally {
+			takeSnap();
+		}
 	}
 
 	public void clickByName(String name) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void clickByLink(String name) {
-		// TODO Auto-generated method stub
-		
+		driver.findElementByLinkText(name).click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public void clickByLinkNoSnap(String name) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void clickByXpath(String xpathVal) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void clickByXpathNoSnap(String xpathVal) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getTextById(String idVal) {
@@ -113,32 +136,32 @@ public class GenericWrappers implements Wrappers {
 
 	public void selectVisibileTextById(String id, String value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void selectIndexById(String id, int value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void switchToParentWindow() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void switchToLastWindow() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void acceptAlert() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void dismissAlert() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getAlertText() {
@@ -160,12 +183,12 @@ public class GenericWrappers implements Wrappers {
 
 	public void closeBrowser() {
 		driver.close();	
-		
+
 	}
 
 	public void closeAllBrowsers() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

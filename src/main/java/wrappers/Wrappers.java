@@ -46,7 +46,6 @@ public interface Wrappers {
 		 */
 		public void enterByXpath(String xpathValue, String data) ;
 
-
 		/**
 		 * This method will verify the title of the browser 
 		 * @param title - The expected title of the browser
@@ -78,7 +77,6 @@ public interface Wrappers {
 		 */
 		public void verifyTextContainsByXpath(String xpath, String text);
 
-
 		/**
 		 * This method will click the element using id as locator
 		 * @param id  The id (locator) of the element to be clicked
@@ -99,15 +97,15 @@ public interface Wrappers {
 		 * @param name  The name (locator) of the element to be clicked
 		 * @author Babu - TestLeaf
 		 */
-		public void clickByName(String name)  ;
-		
+		public void clickByName(String name)  ;		
 
 		/**
 		 * This method will click the element using link name as locator and do take snap
 		 * @param name  The link name (locator) of the element to be clicked
 		 * @author Babu - TestLeaf
+		 * @throws InterruptedException 
 		 */
-		public void clickByLink(String name) ;
+		public void clickByLink(String name) throws InterruptedException ;
 		
 		/**
 		 * This method will click the element using link name as locator and do not take snap

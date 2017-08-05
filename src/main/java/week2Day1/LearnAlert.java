@@ -1,13 +1,17 @@
 package week2Day1;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LearnAlert {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 	
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		ChromeDriver driver = new ChromeDriver();
@@ -27,6 +31,14 @@ public class LearnAlert {
 		String txt = alt.getText();
 		
 		System.out.println(txt);		
+		
+		
+		File src = driver.getScreenshotAs(OutputType.FILE);
+		File desc = new File("./snaps/1.jpg");
+		FileUtils.copyFile(src, desc);
+		
+		
+		
 		
 		//Accept alert
 		alt.accept();

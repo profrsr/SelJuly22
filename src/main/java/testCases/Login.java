@@ -2,19 +2,16 @@ package testCases;
 
 import org.junit.Test;
 
-import wrappers.GenericWrappers;
+import wrappers.ProjectSpecificWrapper;
 
-public class Login extends GenericWrappers{
+public class Login extends ProjectSpecificWrapper{
+	
 	
 	@Test
-	public void login() {		
-		invokeApp("chrome", "http://leaftaps.com/opentaps");
-		enterById("username", "DemoSalesManager");
-		enterById("password", "crmsfa");
-		clickByClassName("decorativeSubmit11111");
-		clickByClassName("decorativeSubmit");
-	//	clickByLink("CRM/SFA");
-		
+	public void createLead() {		
+		login();
+		clickByLink("Leads");
+		clickByLink("Create Lead");		
 	}
 
 }

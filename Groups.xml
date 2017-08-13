@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" verbose="5" parallel="classes">
+	<test name="Test">
+		<groups>
+			<run>
+				<include name="all"></include>
+				<!-- <exclude name="smoke"></exclude> -->
+				<include name="s.*"></include>
+				<!-- <include name="smoke"></include> <include name="sanity"></include> -->
+			</run>
+		</groups>
+		<classes>
+			<class name="leaf.Lead.CreateLeadAndEditLead" />
+			<class name="leaf.Contact.MergeContact" />
+			<class name="leaf.Lead.CreateLead" />
+			<class name="leaf.Lead.MergeLead" />
+			<class name="leaf.Contact.EditContact" />
+			<class name="leaf.Contact.CreateContact" />
+			<class name="leaf.Lead.DeleteLead" />
+			<class name="leaf.Lead.DuplicateLead" />
+			<class name="leaf.Lead.EditLead" />
+			<class name="leaf.Contact.DeleteContact" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

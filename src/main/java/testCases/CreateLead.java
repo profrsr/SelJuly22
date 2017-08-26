@@ -3,6 +3,7 @@ package testCases;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 public class CreateLead{
@@ -10,8 +11,9 @@ public class CreateLead{
 	@Test
 	public void createLead() throws Exception{
 		
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-		ChromeDriver driver = new ChromeDriver();
+		System.setProperty("webdriver.gecko.driver", "./drivers/geckodriver.exe");
+		//ChromeDriver driver = new ChromeDriver();
+		FirefoxDriver driver = new FirefoxDriver();
 		driver.get("http://leaftaps.com/opentaps");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

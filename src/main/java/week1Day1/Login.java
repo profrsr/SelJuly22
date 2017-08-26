@@ -16,7 +16,7 @@ public class Login {
 		ChromeDriver driver = new ChromeDriver();
 		
 		//Load the URL123
-		driver.get("http://leaftaps.com/opentaps");
+	/*	driver.get("http://leaftaps.com/opentaps");
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
@@ -35,15 +35,15 @@ public class Login {
 		//Click on Login Button
 		driver.findElementByClassName("decorativeSubmit").click();
 		
-		/*////Click on LogOut Button
+		////Click on LogOut Button
 		driver.findElementByClassName("decorativeSubmit").click();
-		*/
+		
 		
 		//Click CRM/SFA Link
 		driver.findElementByLinkText("CRM/SFA").click();
 		
 		
-		
+*/		
 		
 	}
 }

@@ -1,27 +1,26 @@
-package week2Day1;
+package learnGrid;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
-public class LearnAlert {
+public class LearnAlertWithGrid {
 
 	@Test
 	public void sample() throws MalformedURLException{
 	
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-		ChromeDriver driver = new ChromeDriver();
+		DesiredCapabilities dc = new DesiredCapabilities();
+		dc.setBrowserName("firefox");
+		dc.setPlatform(Platform.MAC);
+		
+		RemoteWebDriver driver = new RemoteWebDriver(new URL("http://192.168.1.46:4444/wd/hub"),dc);
+		
 		driver.get("https://www.irctc.co.in/eticketing/loginHome.jsf");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
